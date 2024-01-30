@@ -21,7 +21,7 @@ model Barbershop {
   id       String    @id @default(uuid())
   name     String
   address  String
-  imagURL  String
+  imageUrl  String
   services Service[]
   bookings  Booking[]
 }
