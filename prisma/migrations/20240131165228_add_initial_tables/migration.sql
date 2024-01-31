@@ -12,7 +12,7 @@ CREATE TABLE "Barbershop" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "address" TEXT NOT NULL,
-    "imagURL" TEXT NOT NULL,
+    "imageUrl" TEXT NOT NULL,
 
     CONSTRAINT "Barbershop_pkey" PRIMARY KEY ("id")
 );
@@ -24,6 +24,7 @@ CREATE TABLE "Service" (
     "price" DECIMAL(10,2) NOT NULL,
     "barbershopId" TEXT NOT NULL,
     "description" TEXT NOT NULL,
+    "imageUrl" TEXT NOT NULL,
 
     CONSTRAINT "Service_pkey" PRIMARY KEY ("id")
 );
