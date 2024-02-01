@@ -18,7 +18,9 @@ import { ptBR } from "date-fns/locale";
 import { Loader2 } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
+import { toast } from "sonner";
 import { saveBooking } from "../_actions/save-booking";
 import { generateDayTimeList } from "../_helpers/hours";
 
@@ -33,11 +35,14 @@ const ServiceItem = ({
   barbershop,
   isAuthenticated,
 }: ServiceItemProps) => {
+  const router = useRouter();
+
   const { data } = useSession();
 
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [hour, setHour] = useState<string | undefined>();
-  const [submiIsLoading, setSubmitIsLoading] = useState(false);
+  const [submitIsLoading, setSubmitIsLoading] = useState(false);
+  const [sheetIsOpen, setSheetIsOpen] = useState(false);
 
   const handleDateClick = (date: Date | undefined) => {
     setDate(date);
@@ -74,6 +79,20 @@ const ServiceItem = ({
         date: newDate,
         userId: (data.user as any).id,
       });
+
+      setSheetIsOpen(false);
+      setHour(undefined);
+      setDate(undefined);
+
+      toast("Reserva realizada com sucesso!", {
+        description: format(newDate, "'Para' dd 'de' MMMM 'às' HH':'mm'.'", {
+          locale: ptBR,
+        }),
+        action: {
+          label: "Visualizar",
+          onClick: () => router.push("/bookings"),
+        },
+      });
     } catch (error) {
       console.error(error);
     } finally {
@@ -109,7 +128,7 @@ const ServiceItem = ({
                   currency: "BRL",
                 }).format(Number(service.price))}
               </p>
-              <Sheet>
+              <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen}>
                 <SheetTrigger>
                   <Button variant="secondary" onClick={handleBookingClick}>
                     Reservar
@@ -212,10 +231,10 @@ const ServiceItem = ({
                   <SheetFooter className="px-5">
                     <Button
                       onClick={handleBookingSubmit}
-                      disabled={!hour || !date || submiIsLoading}
+                      disabled={!hour || !date || submitIsLoading}
                     >
                       Confirmar Reserva
-                      {submiIsLoading && (
+                      {submitIsLoading && (
                         <Loader2 className="ml-2 h-4 w-4 animate-spin" />
                       )}
                     </Button>
