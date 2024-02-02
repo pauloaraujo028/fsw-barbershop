@@ -17,7 +17,7 @@ interface BookingItemProps {
 const BookingItem = ({ booking }: BookingItemProps) => {
   const isBookingConfirmed = isFuture(booking.date);
   return (
-    <div>
+    <div className="min-w-full">
       <Card>
         <CardContent className="p-0 pl-5 flex justify-between py-0">
           <div className="flex flex-col gap-2 py-5">
