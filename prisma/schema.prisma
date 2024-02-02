@@ -13,7 +13,6 @@ datasource db {
 model User {
   id            String    @id @default(cuid())
   name          String?
-  password      String
   email         String?   @unique
   emailVerified DateTime?
   image         String?
@@ -48,10 +47,9 @@ model Booking {
   user         User       @relation(fields: [userId], references: [id])
   serviceId    String
   service      Service    @relation(fields: [serviceId], references: [id])
-  date         DateTime
   barbershopId String
   barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
-  status       String
+  date         DateTime
 }
 
 model Account {

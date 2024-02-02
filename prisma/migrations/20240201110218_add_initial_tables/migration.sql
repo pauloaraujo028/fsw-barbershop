@@ -2,7 +2,6 @@
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
     "name" TEXT,
-    "password" TEXT NOT NULL,
     "email" TEXT,
     "emailVerified" TIMESTAMP(3),
     "image" TEXT,
@@ -37,9 +36,8 @@ CREATE TABLE "Booking" (
     "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "serviceId" TEXT NOT NULL,
-    "date" TIMESTAMP(3) NOT NULL,
     "barbershopId" TEXT NOT NULL,
-    "status" TEXT NOT NULL,
+    "date" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Booking_pkey" PRIMARY KEY ("id")
 );
