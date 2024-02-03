@@ -101,7 +101,7 @@ const BookingItem = ({ booking }: BookingItemProps) => {
 
       <SheetContent className="p-0">
         <SheetHeader className="text-left border-b border-solid border-secondary p-5">
-          <SheetTitle>Informações da Reserva</SheetTitle>
+          <SheetTitle className="tex">Informações da Reserva</SheetTitle>
         </SheetHeader>
 
         <div className="px-5">
@@ -139,8 +139,10 @@ const BookingItem = ({ booking }: BookingItemProps) => {
 
           <Card>
             <CardContent className="flex flex-col gap-3 p-3">
-              <div className="flex justify-between">
-                <h2 className="font-bold">{booking.service.name}</h2>
+              <div className="flex justify-between items-center">
+                <h2 className="font-bold overflow-hidden text-nowrap text-ellipsis ">
+                  {booking.service.name}
+                </h2>
                 <h3 className="font-bold text-sm">
                   {Intl.NumberFormat("pt-BR", {
                     style: "currency",
@@ -149,7 +151,7 @@ const BookingItem = ({ booking }: BookingItemProps) => {
                 </h3>
               </div>
 
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <h3 className="text-gray-400">Data</h3>
                 <h4 className="text-sm">
                   {format(booking.date, "dd 'de' MMMM", {
@@ -158,12 +160,12 @@ const BookingItem = ({ booking }: BookingItemProps) => {
                 </h4>
               </div>
 
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <h3 className="text-gray-400">Horário</h3>
                 <h4 className="text-sm">{format(booking.date, "hh:mm")}</h4>
               </div>
 
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <h3 className="text-gray-400">Barbearia</h3>
                 <h4 className="text-sm">{booking.barbershop.name}</h4>
               </div>
