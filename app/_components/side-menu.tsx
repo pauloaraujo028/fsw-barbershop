@@ -89,7 +89,7 @@ const SideMenu = () => {
                 Fazer Login
               </Button>
             </AlertDialogTrigger>
-            <AlertDialogContent className="w-[50%] rounded-2xl">
+            <AlertDialogContent className="w-[90%] rounded-2xl">
               <AlertDialogHeader className="items-center">
                 <AlertDialogTitle>Faça login na plataforma</AlertDialogTitle>
                 <AlertDialogDescription>

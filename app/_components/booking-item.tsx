@@ -119,9 +119,9 @@ const BookingItem = ({ booking }: BookingItemProps) => {
                     <AvatarImage src={booking.barbershop.imageUrl} />
                   </Avatar>
 
-                  <div>
+                  <div className="w-[75%]">
                     <h2 className="font-bold">{booking.barbershop.name}</h2>
-                    <h3 className="text-xs overflow-hidden text-nowrap text-ellipsis">
+                    <h3 className="text-xs overflow-hidden text-ellipsis text-nowrap">
                       {booking.barbershop.address}
                     </h3>
                   </div>
@@ -187,7 +187,7 @@ const BookingItem = ({ booking }: BookingItemProps) => {
                   Cancelar Reserva
                 </Button>
               </AlertDialogTrigger>
-              <AlertDialogContent className="rounded-2xl">
+              <AlertDialogContent className="rounded-2xl w-[90%]">
                 <AlertDialogHeader>
                   <AlertDialogTitle>Cancelar Reserva</AlertDialogTitle>
                   <AlertDialogDescription className="py-3">

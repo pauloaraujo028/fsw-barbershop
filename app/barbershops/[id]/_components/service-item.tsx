@@ -281,7 +281,7 @@ const ServiceItem = ({
                           Confirmar Reserva
                         </Button>
                       </AlertDialogTrigger>
-                      <AlertDialogContent className="w-[50%] rounded-2xl">
+                      <AlertDialogContent className="w-[90%] rounded-2xl">
                         <AlertDialogHeader className="items-center">
                           <CheckCircle2 className="h-[72px] w-[72px] mb-3 fill-primary" />
                           <AlertDialogTitle>Reserva Efetuada!</AlertDialogTitle>
