@@ -9,6 +9,17 @@ import {
 } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "./ui/alert-dialog";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { SheetHeader, SheetTitle } from "./ui/sheet";
@@ -36,14 +47,33 @@ const SideMenu = () => {
             <h2 className="font-bold">{data.user.name}</h2>
           </div>
 
-          <Button
-            variant="secondary"
-            onClick={handleLogoutClick}
-            className="flex justify-start gap-2"
-          >
-            <LogOutIcon size={18} />
-            Sair
-          </Button>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button variant="secondary" className="flex justify-start gap-2">
+                <LogOutIcon size={18} />
+                Sair
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent className="rounded-2xl">
+              <AlertDialogHeader>
+                <AlertDialogTitle>Sair</AlertDialogTitle>
+                <AlertDialogDescription className="py-3">
+                  Deseja mesmo sair da plataforma?
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter className="flex-row gap-3">
+                <AlertDialogCancel className="w-full m-0">
+                  Cancelar
+                </AlertDialogCancel>
+                <AlertDialogAction
+                  className="w-full"
+                  onClick={handleLogoutClick}
+                >
+                  Sair
+                </AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       ) : (
         <div className="flex flex-col px-5 py-6 gap-4">
@@ -52,14 +82,27 @@ const SideMenu = () => {
             <h2>Olá, faça seu login!</h2>
           </div>
 
-          <Button
-            variant="secondary"
-            onClick={handleLoginClick}
-            className="flex justify-start gap-2"
-          >
-            <LogIn size={18} />
-            Fazer Login
-          </Button>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button variant="secondary" className="flex justify-start gap-2">
+                <LogIn size={18} />
+                Fazer Login
+              </Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent className="w-[50%] rounded-2xl">
+              <AlertDialogHeader className="items-center">
+                <AlertDialogTitle>Faça login na plataforma</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Conecte-se usando sua conta do Google.
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <Button variant="outline" onClick={handleLoginClick}>
+                  Google
+                </Button>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
       )}
 

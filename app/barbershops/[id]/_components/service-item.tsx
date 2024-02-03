@@ -12,10 +12,19 @@ import {
   SheetTrigger,
 } from "@/app/_components/ui/sheet";
 
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/app/_components/ui/alert-dialog";
 import { Barbershop, Booking, Service } from "@prisma/client";
 import { format, setHours, setMinutes } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { Loader2 } from "lucide-react";
+import { CheckCircle2, Loader2 } from "lucide-react";
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -266,15 +275,33 @@ const ServiceItem = ({
                   </div>
 
                   <SheetFooter className="px-5">
-                    <Button
-                      onClick={handleBookingSubmit}
-                      disabled={!hour || !date || submitIsLoading}
-                    >
-                      Confirmar Reserva
-                      {submitIsLoading && (
-                        <Loader2 className="ml-2 h-4 w-4 animate-spin" />
-                      )}
-                    </Button>
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <Button disabled={!hour || !date || submitIsLoading}>
+                          Confirmar Reserva
+                        </Button>
+                      </AlertDialogTrigger>
+                      <AlertDialogContent className="w-[50%] rounded-2xl">
+                        <AlertDialogHeader className="items-center">
+                          <CheckCircle2 className="h-[72px] w-[72px] mb-3 fill-primary" />
+                          <AlertDialogTitle>Reserva Efetuada!</AlertDialogTitle>
+                          <AlertDialogDescription>
+                            Sua reserva foi agendada com sucesso.
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <Button
+                            variant="secondary"
+                            onClick={handleBookingSubmit}
+                          >
+                            Confirmar
+                            {submitIsLoading && (
+                              <Loader2 className="ml-2 h-4 w-4 animate-spin" />
+                            )}
+                          </Button>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
                   </SheetFooter>
                 </SheetContent>
               </Sheet>

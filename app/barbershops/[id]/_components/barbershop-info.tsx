@@ -63,7 +63,7 @@ const BarbershopInfo = ({ barbershop }: BarbershopInfoProps) => {
           <p className="text-sm">{barbershop.address}</p>
         </div>
         <div className="flex items-center gap-1">
-          <StarIcon className="text-primary" size={18} />
+          <StarIcon className="text-primary fill-primary" size={18} />
           <p className="text-sm">5,0 (899 avaliações) </p>
         </div>
       </div>
