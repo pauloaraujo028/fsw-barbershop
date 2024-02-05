@@ -274,7 +274,7 @@ const ServiceItem = ({
                     </Card>
                   </div>
 
-                  <SheetFooter className="px-5">
+                  <SheetFooter className="px-5 pb-6">
                     <AlertDialog>
                       <AlertDialogTrigger asChild>
                         <Button disabled={!hour || !date || submitIsLoading}>

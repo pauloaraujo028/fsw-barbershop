@@ -3,7 +3,7 @@
 import { Prisma } from "@prisma/client";
 import { format, isFuture } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { Loader2 } from "lucide-react";
+import { Loader2, Smartphone } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -99,7 +99,7 @@ const BookingItem = ({ booking }: BookingItemProps) => {
         </Card>
       </SheetTrigger>
 
-      <SheetContent className="p-0">
+      <SheetContent className="p-0 overflow-y-auto [&::-webkit-scrollbar]:hidden">
         <SheetHeader className="text-left border-b border-solid border-secondary p-5">
           <SheetTitle className="tex">Informações da Reserva</SheetTitle>
         </SheetHeader>
@@ -110,6 +110,7 @@ const BookingItem = ({ booking }: BookingItemProps) => {
               src="/barbershop-map.png"
               fill
               alt={booking.barbershop.name}
+              className="rounded-lg"
             />
 
             <div className="w-full absolute bottom-4 left-0 px-5">
@@ -131,7 +132,7 @@ const BookingItem = ({ booking }: BookingItemProps) => {
           </div>
 
           <Badge
-            className="w-fit my-3"
+            className="w-fit mt-6 mb-3"
             variant={isBookingConfirmed ? "default" : "secondary"}
           >
             {isBookingConfirmed ? "Confirmado" : "Finalizado"}
@@ -172,7 +173,24 @@ const BookingItem = ({ booking }: BookingItemProps) => {
             </CardContent>
           </Card>
 
-          <SheetFooter className="flex-row gap-3 mt-6">
+          <div className="py-6 flex flex-col gap-4">
+            <div className="flex items-center justify-between">
+              <h3 className="flex gap-2">
+                <Smartphone />
+                (11) 98204 - 5108
+              </h3>
+              <Button variant="outline">Copiar</Button>
+            </div>
+            <div className="flex items-center justify-between">
+              <h3 className="flex gap-2">
+                <Smartphone />
+                (11) 98204 - 5108
+              </h3>
+              <Button variant="outline">Copiar</Button>
+            </div>
+          </div>
+
+          <SheetFooter className="flex-row gap-3 my-6">
             <SheetClose asChild>
               <Button className="w-full" variant="secondary">
                 Voltar
