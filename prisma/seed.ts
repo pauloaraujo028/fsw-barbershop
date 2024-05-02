@@ -68,29 +68,27 @@ async function seedDatabase() {
       "Sinta-se revigorado com nossos serviços de qualidade.",
     ];
 
-    const phones = [
-      "+55 11 1234-5678",
-      "+55 11 2345-6789",
-      "+55 11 3456-7890",
-      "+55 11 4567-8901",
-      "+55 11 5678-9012",
-      "+55 11 6789-0123",
-      "+55 11 7890-1234",
-      "+55 11 8901-2345",
-      "+55 11 9012-3456",
-      "+55 11 0123-4567",
+    const phoneNumbers = [
+      "+11 9 1234-5678",
+      "+11 9 2345-6789",
+      "+11 9 3456-7890",
+      "+11 9 4567-8901",
+      "+11 9 5678-9012",
+      "+11 9 6789-0123",
+      "+11 9 7890-1234",
+      "+11 9 8901-2345",
+      "+11 9 9012-3456",
+      "+11 9 0123-4567",
     ];
 
     const schedules = [
-      // Exemplo de dados para dias e horários de trabalho
-      { day: "Monday", startTime: "09:00", endTime: "18:00" },
-      { day: "Tuesday", startTime: "09:00", endTime: "18:00" },
-      { day: "Wednesday", startTime: "09:00", endTime: "18:00" },
-      { day: "Thursday", startTime: "09:00", endTime: "18:00" },
-      { day: "Friday", startTime: "09:00", endTime: "18:00" },
-      { day: "Saturday", startTime: "09:00", endTime: "15:00" },
-      { day: "Sunday", startTime: "Closed", endTime: "Closed" },
-      // Adicione mais dados conforme necessário
+      { day: "Segunda-Feira", startTime: "09:00", endTime: "18:00" },
+      { day: "Terça-Feira", startTime: "09:00", endTime: "18:00" },
+      { day: "Quarta-Feira", startTime: "09:00", endTime: "18:00" },
+      { day: "Quinta-Feira", startTime: "09:00", endTime: "18:00" },
+      { day: "Sexta-Feira", startTime: "09:00", endTime: "18:00" },
+      { day: "Sábado", startTime: "09:00", endTime: "15:00" },
+      { day: "Domingo", startTime: "Fechado", endTime: "Fechado" },
     ];
 
     const services = [
@@ -144,7 +142,7 @@ async function seedDatabase() {
       const name = creativeNames[i];
       const address = addresses[i];
       const description = descriptions[i];
-      const phone = phones[i];
+      const numbers = phoneNumbers[i];
       const imageUrl = images[i];
 
       const barbershop = await prisma.barbershop.create({
@@ -152,7 +150,7 @@ async function seedDatabase() {
           name,
           address,
           description,
-          phone,
+          phone: numbers,
           imageUrl: imageUrl,
           schedules: {
             create: schedules.map((schedule) => ({ ...schedule })),

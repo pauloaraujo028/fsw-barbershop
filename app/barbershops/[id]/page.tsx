@@ -34,6 +34,7 @@ const BarbershopDetailsPage = async ({
     },
     include: {
       services: true,
+      schedules: true,
     },
   });
 
@@ -79,56 +80,34 @@ const BarbershopDetailsPage = async ({
               <h2 className="text-xs text-gray-400 uppercase py-6">
                 Sobre nós
               </h2>
-              <p className="text-sm text-justify">
-                Bem-vindo à Vintage Barber, onde tradição encontra estilo. Nossa
-                equipe de mestres barbeiros transforma cortes de cabelo e barbas
-                em obras de arte. Em um ambiente acolhedor, promovemos
-                confiança, estilo e uma comunidade unida.
-              </p>
+              <p className="text-sm text-justify">{barbershop.description}</p>
             </div>
 
             <div className="px-5 py-6 flex flex-col gap-4  border-b border-solid border-secondary">
+              <h2 className="text-xs text-gray-400 uppercase">
+                Nossos contatos
+              </h2>
               <div className="flex items-center justify-between">
-                <h3 className="flex gap-2">
+                <h3 className="flex gap-2 text-sm">
                   <Smartphone />
-                  (11) 98204 - 5108
-                </h3>
-                <Button variant="secondary">Copiar</Button>
-              </div>
-              <div className="flex items-center justify-between">
-                <h3 className="flex gap-2">
-                  <Smartphone />
-                  (11) 98204 - 5108
+                  {barbershop.phone}
                 </h3>
                 <Button variant="secondary">Copiar</Button>
               </div>
             </div>
 
             <div className="px-5 py-6 flex flex-col gap-2">
-              <div className="flex justify-between">
-                <h3 className="text-gray-400">Segunda</h3>
-                <h4 className="text-sm">Fechado</h4>
-              </div>
-              <div className="flex justify-between">
-                <h3 className="text-gray-400">Terça-Feira</h3>
-                <h4 className="text-sm">09:00 - 21:00</h4>
-              </div>
-              <div className="flex justify-between">
-                <h3 className="text-gray-400">Quarta-Feira</h3>
-                <h4 className="text-sm">09:00 - 21:00</h4>
-              </div>
-              <div className="flex justify-between">
-                <h3 className="text-gray-400">Quinta-Feira</h3>
-                <h4 className="text-sm">09:00 - 21:00</h4>
-              </div>
-              <div className="flex justify-between">
-                <h3 className="text-gray-400">Sexta-Feira</h3>
-                <h4 className="text-sm">09:00 - 21:00</h4>
-              </div>
-              <div className="flex justify-between">
-                <h3 className="text-gray-400">Sábado</h3>
-                <h4 className="text-sm">Fechado</h4>
-              </div>
+              <h2 className="text-xs text-gray-400 uppercase pb-4">
+                Horários de Atendimento
+              </h2>
+              {barbershop.schedules.map((schedule) => (
+                <div key={schedule.id} className="flex justify-between">
+                  <h3 className="text-sm">{schedule.day}</h3>
+                  <h4 className="text-sm">
+                    {schedule.startTime} - {schedule.endTime}
+                  </h4>
+                </div>
+              ))}
             </div>
           </TabsContent>
         </Tabs>
