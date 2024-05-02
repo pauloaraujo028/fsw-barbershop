@@ -22,12 +22,23 @@ model User {
 }
 
 model Barbershop {
-  id       String    @id @default(uuid())
-  name     String
-  address  String
-  imageUrl String
-  services Service[]
-  bookings Booking[]
+  id          String     @id @default(uuid())
+  name        String
+  address     String
+  imageUrl    String
+  description String?
+  phone       String?
+  schedules   Schedule[]
+  services    Service[]
+  bookings    Booking[]
+}
+
+model Schedule {
+  id          String       @id @default(uuid())
+  day         String
+  startTime   String
+  endTime     String
+  barbershops Barbershop[]
 }
 
 model Service {

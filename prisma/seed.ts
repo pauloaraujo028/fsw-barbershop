@@ -55,6 +55,44 @@ async function seedDatabase() {
       "Avenida Clássica, 707",
     ];
 
+    const descriptions = [
+      "Barbearia aconchegante com ambiente vintage.",
+      "Corte de cabelo e barba com estilo e elegância.",
+      "O melhor lugar para cuidar da sua barba.",
+      "Um ambiente descontraído para homens modernos.",
+      "Barbearia tradicional com profissionais experientes.",
+      "Experimente o luxo de um corte personalizado.",
+      "Especialistas em cuidados masculinos desde 1999.",
+      "Barbearia premium com serviço de primeira classe.",
+      "Atendimento exclusivo para o homem contemporâneo.",
+      "Sinta-se revigorado com nossos serviços de qualidade.",
+    ];
+
+    const phones = [
+      "+55 11 1234-5678",
+      "+55 11 2345-6789",
+      "+55 11 3456-7890",
+      "+55 11 4567-8901",
+      "+55 11 5678-9012",
+      "+55 11 6789-0123",
+      "+55 11 7890-1234",
+      "+55 11 8901-2345",
+      "+55 11 9012-3456",
+      "+55 11 0123-4567",
+    ];
+
+    const schedules = [
+      // Exemplo de dados para dias e horários de trabalho
+      { day: "Monday", startTime: "09:00", endTime: "18:00" },
+      { day: "Tuesday", startTime: "09:00", endTime: "18:00" },
+      { day: "Wednesday", startTime: "09:00", endTime: "18:00" },
+      { day: "Thursday", startTime: "09:00", endTime: "18:00" },
+      { day: "Friday", startTime: "09:00", endTime: "18:00" },
+      { day: "Saturday", startTime: "09:00", endTime: "15:00" },
+      { day: "Sunday", startTime: "Closed", endTime: "Closed" },
+      // Adicione mais dados conforme necessário
+    ];
+
     const services = [
       {
         name: "Corte de Cabelo",
@@ -105,13 +143,20 @@ async function seedDatabase() {
     for (let i = 0; i < 10; i++) {
       const name = creativeNames[i];
       const address = addresses[i];
+      const description = descriptions[i];
+      const phone = phones[i];
       const imageUrl = images[i];
 
       const barbershop = await prisma.barbershop.create({
         data: {
           name,
           address,
+          description,
+          phone,
           imageUrl: imageUrl,
+          schedules: {
+            create: schedules.map((schedule) => ({ ...schedule })),
+          },
         },
       });
 
