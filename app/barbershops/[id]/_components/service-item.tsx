@@ -176,10 +176,11 @@ const ServiceItem = ({
                 }).format(Number(service.price))}
               </p>
               <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen}>
-                <SheetTrigger>
-                  <Button variant="secondary" onClick={handleBookingClick}>
-                    Reservar
-                  </Button>
+                <SheetTrigger
+                  className="py-2 px-4 rounded-md bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                  onClick={handleBookingClick}
+                >
+                  Reservar
                 </SheetTrigger>
 
                 <SheetContent className="p-0 overflow-y-auto [&::-webkit-scrollbar]:hidden">
