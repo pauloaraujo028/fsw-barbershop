@@ -5,19 +5,21 @@ import Image from "next/image";
 import Link from "next/link";
 import SideMenu from "./side-menu";
 import { Button } from "./ui/button";
-import { Card, CardContent } from "./ui/card";
+import { CardContent } from "./ui/card";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 const Header = () => {
   return (
-    <Card>
+    <div>
       <CardContent className="p-5 flex justify-between flex-row items-center">
         <Link href="/">
           <Image
             src="/logo.png"
+            width={0}
+            height={0}
+            sizes="100vw"
             alt="FSW Barber logo"
-            width={120}
-            height={18}
+            style={{ width: "120px", height: "18px" }}
           />
         </Link>
         <Sheet>
@@ -32,7 +34,7 @@ const Header = () => {
           </SheetContent>
         </Sheet>
       </CardContent>
-    </Card>
+    </div>
   );
 };
 
