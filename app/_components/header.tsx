@@ -10,7 +10,7 @@ import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 const Header = () => {
   return (
-    <div>
+    <div className="border-b border-muted">
       <CardContent className="p-5 flex justify-between flex-row items-center">
         <Link href="/">
           <Image
