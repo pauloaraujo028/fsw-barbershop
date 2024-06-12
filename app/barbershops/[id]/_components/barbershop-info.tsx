@@ -53,6 +53,8 @@ const BarbershopInfo = ({ barbershop }: BarbershopInfoProps) => {
           alt={barbershop.name}
           style={{ objectFit: "cover" }}
           className="opacity-75"
+          sizes="100"
+          priority
         />
       </section>
 

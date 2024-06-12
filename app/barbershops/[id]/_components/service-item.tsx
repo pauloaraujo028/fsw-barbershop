@@ -161,6 +161,7 @@ const ServiceItem = ({
               fill
               style={{ objectFit: "contain" }}
               className="rounded-lg"
+              sizes="100"
             />
           </div>
           <div className="flex flex-col w-full">
