@@ -4,6 +4,7 @@ import {
   CalendarDays,
   CircleUserRound,
   HomeIcon,
+  LayoutDashboardIcon,
   LogIn,
   LogOutIcon,
 } from "lucide-react";
@@ -119,6 +120,15 @@ const SideMenu = () => {
             <Link href="/bookings">
               <CalendarDays size={18} />
               Agendamentos
+            </Link>
+          </Button>
+        )}
+
+        {data?.user && (
+          <Button variant="outline" className="justify-start gap-2" asChild>
+            <Link href="/dashboard">
+              <LayoutDashboardIcon size={18} />
+              Dashboard
             </Link>
           </Button>
         )}
