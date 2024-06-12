@@ -7,7 +7,7 @@ import {
 } from "@/app/_components/ui/tabs";
 import { authOptions } from "@/app/_lib/auth";
 import { db } from "@/app/_lib/prisma";
-import { Smartphone } from "lucide-react";
+import { ScissorsIcon, Smartphone } from "lucide-react";
 import { getServerSession } from "next-auth";
 import BarbershopInfo from "./_components/barbershop-info";
 import ServiceItem from "./_components/service-item";
@@ -88,10 +88,16 @@ const BarbershopDetailsPage = async ({
                 Nossos contatos
               </h2>
               <div className="flex items-center justify-between">
-                <h3 className="flex gap-2 text-sm">
-                  <Smartphone />
-                  {barbershop.phone}
-                </h3>
+                <div className="flex gap-4">
+                  <h3 className="flex gap-2 text-sm">
+                    <ScissorsIcon />
+                    Barber asdasdas
+                  </h3>
+                  <h3 className="flex gap-2 text-sm">
+                    <Smartphone />
+                    {barbershop.phone}
+                  </h3>
+                </div>
                 <Button variant="secondary">Copiar</Button>
               </div>
             </div>
