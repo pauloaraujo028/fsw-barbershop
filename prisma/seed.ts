@@ -137,6 +137,38 @@ async function seedDatabase() {
       },
     ];
 
+    const categories = [
+      {
+        name: "Corte",
+        imageUrl:
+          "https://utfs.io/f/f486bf87-3592-456e-9fa6-fff01454cf9a-klwpka.png",
+      },
+      {
+        name: "Barba",
+        imageUrl:
+          "https://utfs.io/f/f486bf87-3592-456e-9fa6-fff01454cf9a-klwpka.png",
+      },
+      {
+        name: "Pézinho",
+        imageUrl:
+          "https://utfs.io/f/f486bf87-3592-456e-9fa6-fff01454cf9a-klwpka.png",
+      },
+      {
+        name: "Sobrancelha",
+        imageUrl:
+          "https://utfs.io/f/f486bf87-3592-456e-9fa6-fff01454cf9a-klwpka.png",
+      },
+    ];
+
+    // Criar categorias
+    const createdCategories = [];
+    for (const category of categories) {
+      const createdCategory = await prisma.category.create({
+        data: category,
+      });
+      createdCategories.push(createdCategory);
+    }
+
     // Criar 10 barbearias com nomes e endereços fictícios
     const barbershops = [];
     for (let i = 0; i < 10; i++) {
@@ -171,6 +203,11 @@ async function seedDatabase() {
               },
             },
             imageUrl: service.imageUrl,
+            categories: {
+              connect: createdCategories
+                .filter((category) => category.name === service.name)
+                .map((category) => ({ id: category.id })),
+            },
           },
         });
       }

@@ -50,6 +50,7 @@ model Service {
   description  String
   imageUrl     String
   bookings     Booking[]
+  categories   Category[] @relation("ServiceCategories")
 }
 
 model Booking {
@@ -61,6 +62,13 @@ model Booking {
   barbershopId String
   barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
   date         DateTime
+}
+
+model Category {
+  id       String    @id @default(uuid())
+  name     String
+  imageUrl String
+  services Service[] @relation("ServiceCategories")
 }
 
 model Account {
