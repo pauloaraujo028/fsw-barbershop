@@ -1,5 +1,6 @@
 import { Category } from "@prisma/client";
 import Image from "next/image";
+import { Button } from "./ui/button";
 
 interface CategoryItemProps {
   category: Category;
@@ -7,21 +8,17 @@ interface CategoryItemProps {
 
 const CategoryItem = ({ category }: CategoryItemProps) => {
   return (
-    <div className="flex items-center gap-3 px-4 py-3 bg-muted rounded-full">
-      <div className="w-[30px] h-[30px] relative">
+    <section className="flex">
+      <Button className="gap-2" variant="secondary">
         <Image
           src={category.imageUrl}
           alt={category.name}
-          width={30}
-          height={30}
-          layout="fixed"
-          className="rounded-full"
+          width={16}
+          height={16}
         />
-      </div>
-      <span className="font-semibold text-sm overflow-hidden whitespace-nowrap">
-        {category.name}
-      </span>
-    </div>
+        <span className="font-semibold text-sm">{category.name}</span>
+      </Button>
+    </section>
   );
 };
 

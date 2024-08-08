@@ -48,6 +48,22 @@ export default async function Home() {
         <Search />
       </section>
 
+      <section className="mt-6">
+        <CategoryList />
+      </section>
+
+      <section className="w-full h-auto px-5 mt-6">
+        <Image
+          src="/banner01.png"
+          width={0}
+          height={0}
+          alt="Banner"
+          sizes="100vw"
+          quality={100}
+          className="w-full h-[150px] rounded-md border border-muted"
+        />
+      </section>
+
       {confirmedBookings.length > 0 && (
         <section className="mt-6">
           <h2 className="pl-5 text-xs uppercase text-gray-400 font-bold mb-3">
@@ -63,10 +79,6 @@ export default async function Home() {
       )}
 
       <section className="mt-6">
-        <CategoryList />
-      </section>
-
-      <section className="mt-6">
         <h2 className="pl-5 text-xs uppercase text-gray-400 font-bold mb-3">
           Recomendados
         </h2>
@@ -78,18 +90,6 @@ export default async function Home() {
           ))}
         </div>
       </section>
-
-      <div className="w-full h-auto px-5 mt-6">
-        <Image
-          src="/banner01.png"
-          width={0}
-          height={0}
-          alt="Banner"
-          sizes="100vw"
-          quality={100}
-          className="w-full h-[150px] rounded-md border border-muted"
-        />
-      </div>
 
       <section className="my-6">
         <h2 className="pl-5 text-xs uppercase text-gray-400 font-bold mb-3">
