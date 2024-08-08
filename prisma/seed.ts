@@ -141,22 +141,32 @@ async function seedDatabase() {
       {
         name: "Corte",
         imageUrl:
-          "https://utfs.io/f/f486bf87-3592-456e-9fa6-fff01454cf9a-klwpka.png",
+          "https://utfs.io/f/16818170-8369-4159-8d67-13d2116cb016-mmip3w.png",
       },
       {
         name: "Barba",
         imageUrl:
-          "https://utfs.io/f/f486bf87-3592-456e-9fa6-fff01454cf9a-klwpka.png",
+          "https://utfs.io/f/8fbb00c8-5a4d-4acd-be79-67d6ff5760d7-1jo6tu.png",
       },
       {
         name: "Pézinho",
         imageUrl:
-          "https://utfs.io/f/f486bf87-3592-456e-9fa6-fff01454cf9a-klwpka.png",
+          "https://utfs.io/f/ebd7268b-9e4e-4eae-83f5-3f160f5fbdb0-b3pegf.png",
       },
       {
         name: "Sobrancelha",
         imageUrl:
-          "https://utfs.io/f/f486bf87-3592-456e-9fa6-fff01454cf9a-klwpka.png",
+          "https://utfs.io/f/ab9e5ac6-a112-4459-b611-3ee478ffbb36-r7o3kl.png",
+      },
+      {
+        name: "Massagem",
+        imageUrl:
+          "https://utfs.io/f/81fa79bc-abac-4d43-b144-945cb4a2a863-4oen2a.png",
+      },
+      {
+        name: "Hidratação",
+        imageUrl:
+          "https://utfs.io/f/60a60923-c37d-4e4e-b967-f9760ad46478-9uuelq.png",
       },
     ];
 
