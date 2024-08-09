@@ -15,8 +15,8 @@ CREATE TABLE "Barbershop" (
     "name" TEXT NOT NULL,
     "address" TEXT NOT NULL,
     "imageUrl" TEXT NOT NULL,
-    "description" TEXT,
-    "phone" TEXT,
+    "description" TEXT NOT NULL,
+    "phones" TEXT[],
 
     CONSTRAINT "Barbershop_pkey" PRIMARY KEY ("id")
 );
