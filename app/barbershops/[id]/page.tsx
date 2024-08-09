@@ -1,4 +1,4 @@
-import { Button } from "@/app/_components/ui/button";
+import PhoneItem from "@/app/_components/phone-item";
 import {
   Tabs,
   TabsContent,
@@ -7,7 +7,6 @@ import {
 } from "@/app/_components/ui/tabs";
 import { authOptions } from "@/app/_lib/auth";
 import { db } from "@/app/_lib/prisma";
-import { ScissorsIcon, Smartphone } from "lucide-react";
 import { getServerSession } from "next-auth";
 import BarbershopInfo from "./_components/barbershop-info";
 import ServiceItem from "./_components/service-item";
@@ -83,23 +82,13 @@ const BarbershopDetailsPage = async ({
               <p className="text-sm text-justify">{barbershop.description}</p>
             </div>
 
-            <div className="px-5 py-6 flex flex-col gap-4  border-b border-solid border-secondary">
+            <div className="px-5 py-6 flex flex-col gap-4 border-b border-solid border-secondary">
               <h2 className="text-xs text-gray-400 uppercase">
                 Nossos contatos
               </h2>
-              <div className="flex items-center justify-between">
-                <div className="flex gap-4">
-                  <h3 className="flex gap-2 text-sm">
-                    <ScissorsIcon />
-                    Barber asdasdas
-                  </h3>
-                  <h3 className="flex gap-2 text-sm">
-                    <Smartphone />
-                    {barbershop.phone}
-                  </h3>
-                </div>
-                <Button variant="secondary">Copiar</Button>
-              </div>
+              {barbershop.phones.map((phone) => (
+                <PhoneItem key={phone} phone={phone} />
+              ))}
             </div>
 
             <div className="px-5 py-6 flex flex-col gap-2">
