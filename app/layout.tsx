@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Footer from "./_components/footer";
+import { ThemeProvider } from "./_components/theme-provider";
 import { Toaster } from "./_components/ui/sonner";
 import AuthProvider from "./_providers/auth";
 import "./globals.css";
@@ -19,12 +20,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${inter.className} dark`}>
-        <AuthProvider>
-          <div className="flex-1">{children}</div>
-          <Toaster />
-          <Footer />
-        </AuthProvider>
+      <body className={`${inter.className}`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <AuthProvider>
+            <div className="flex-1">{children}</div>
+            <Toaster />
+            <Footer />
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

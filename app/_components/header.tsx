@@ -5,13 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import SideMenu from "./side-menu";
 import { Button } from "./ui/button";
-import { CardContent } from "./ui/card";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 const Header = () => {
   return (
-    <div className="border-b border-muted">
-      <CardContent className="p-5 flex justify-between flex-row items-center">
+    <header className="border-b border-muted">
+      <div className="p-5 flex justify-between flex-row items-center">
         <Link href="/">
           <Image
             src="/logo.png"
@@ -22,6 +21,7 @@ const Header = () => {
             style={{ width: "120px", height: "18px" }}
           />
         </Link>
+
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon">
@@ -33,8 +33,8 @@ const Header = () => {
             <SideMenu />
           </SheetContent>
         </Sheet>
-      </CardContent>
-    </div>
+      </div>
+    </header>
   );
 };
 

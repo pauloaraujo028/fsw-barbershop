@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { ModeToggle } from "./mode-toggle";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -33,7 +34,7 @@ const SideMenu = () => {
   const handleLoginClick = () => signIn("google");
 
   return (
-    <div>
+    <section>
       <SheetHeader className="text-left border-b border-solid border-secondary p-5">
         <SheetTitle>Menu</SheetTitle>
       </SheetHeader>
@@ -45,36 +46,12 @@ const SideMenu = () => {
               <AvatarImage src={data.user?.image ?? ""} />
             </Avatar>
 
-            <h2 className="font-bold">{data.user.name}</h2>
+            <div className="flex flex-col gap-1">
+              <h2 className="font-bold">{data.user.name}</h2>
+              <p className="text-xs">{data.user.email}</p>
+            </div>
           </div>
-
-          <AlertDialog>
-            <AlertDialogTrigger asChild>
-              <Button variant="secondary" className="flex justify-start gap-2">
-                <LogOutIcon size={18} />
-                Sair
-              </Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent className="rounded-2xl">
-              <AlertDialogHeader>
-                <AlertDialogTitle>Sair</AlertDialogTitle>
-                <AlertDialogDescription className="py-3">
-                  Deseja mesmo sair da plataforma?
-                </AlertDialogDescription>
-              </AlertDialogHeader>
-              <AlertDialogFooter className="flex-row gap-3">
-                <AlertDialogCancel className="w-full m-0">
-                  Cancelar
-                </AlertDialogCancel>
-                <AlertDialogAction
-                  className="w-full"
-                  onClick={handleLogoutClick}
-                >
-                  Sair
-                </AlertDialogAction>
-              </AlertDialogFooter>
-            </AlertDialogContent>
-          </AlertDialog>
+          <ModeToggle />
         </div>
       ) : (
         <div className="flex flex-col px-5 py-6 gap-4">
@@ -107,33 +84,69 @@ const SideMenu = () => {
         </div>
       )}
 
-      <div className="flex flex-col gap-3 px-5 py-6">
-        <Button variant="outline" className="justify-start gap-2" asChild>
-          <Link href="/">
-            <HomeIcon size={18} />
-            Início
-          </Link>
-        </Button>
-
-        {data?.user && (
+      <div className="flex flex-col">
+        <div className="flex flex-col gap-3 px-5 py-6 border-b border-solid border-secondary">
           <Button variant="outline" className="justify-start gap-2" asChild>
-            <Link href="/bookings">
-              <CalendarDays size={18} />
-              Agendamentos
+            <Link href="/">
+              <HomeIcon size={18} />
+              Início
             </Link>
           </Button>
-        )}
 
-        {data?.user && (
-          <Button variant="outline" className="justify-start gap-2" asChild>
-            <Link href="/dashboard">
-              <LayoutDashboardIcon size={18} />
-              Dashboard
-            </Link>
-          </Button>
-        )}
+          {data?.user && (
+            <Button variant="outline" className="justify-start gap-2" asChild>
+              <Link href="/bookings">
+                <CalendarDays size={18} />
+                Agendamentos
+              </Link>
+            </Button>
+          )}
+
+          {data?.user && (
+            <Button variant="outline" className="justify-start gap-2" asChild>
+              <Link href="/dashboard">
+                <LayoutDashboardIcon size={18} />
+                Dashboard
+              </Link>
+            </Button>
+          )}
+        </div>
+        <div className="flex px-5 py-6">
+          {data?.user && (
+            <AlertDialog>
+              <AlertDialogTrigger asChild>
+                <Button
+                  variant="secondary"
+                  className="flex w-full justify-center gap-2"
+                >
+                  <LogOutIcon size={18} />
+                  Sair
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent className="w-[90%] rounded-2xl">
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Sair</AlertDialogTitle>
+                  <AlertDialogDescription className="py-3">
+                    Deseja mesmo sair da plataforma?
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter className="flex-row gap-3">
+                  <AlertDialogCancel className="w-full m-0">
+                    Cancelar
+                  </AlertDialogCancel>
+                  <AlertDialogAction
+                    className="w-full"
+                    onClick={handleLogoutClick}
+                  >
+                    Sair
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          )}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 
