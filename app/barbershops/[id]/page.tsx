@@ -8,6 +8,7 @@ import {
 import { authOptions } from "@/app/_lib/auth";
 import { db } from "@/app/_lib/prisma";
 import { getServerSession } from "next-auth";
+import { notFound, redirect } from "next/navigation";
 import BarbershopInfo from "./_components/barbershop-info";
 import ServiceItem from "./_components/service-item";
 
@@ -23,8 +24,7 @@ const BarbershopDetailsPage = async ({
   const session = await getServerSession(authOptions);
 
   if (!params.id) {
-    // TODO: redirecionar para home page
-    return null;
+    redirect("/");
   }
 
   const barbershop = await db.barbershop.findUnique({
@@ -38,8 +38,7 @@ const BarbershopDetailsPage = async ({
   });
 
   if (!barbershop) {
-    // TODO: redirecionar para home page
-    return null;
+    return notFound();
   }
 
   return (
