@@ -4,7 +4,6 @@ import { getServerSession } from "next-auth";
 import Image from "next/image";
 import BookingItem from "../_components/booking-item";
 import CategoryList from "../_components/category-list";
-import Header from "../_components/header";
 import { authOptions } from "../_lib/auth";
 import { db } from "../_lib/prisma";
 import BarbershopItem from "./_components/barbershop-item";
@@ -33,8 +32,6 @@ export default async function Home() {
 
   return (
     <main>
-      <Header />
-
       <section className="px-5 mt-5">
         <h2 className="text-xl font-bold">
           Olá, {session?.user?.name ?? "Faça seu Login"}!
