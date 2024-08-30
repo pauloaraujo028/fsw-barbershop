@@ -17,7 +17,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const formSchema = z.object({
-  search: z
+  title: z
     .string({
       required_error: "Campo obrigatório.",
     })
@@ -38,7 +38,7 @@ const Search = ({ defaultValues }: SearchProps) => {
   });
 
   const handleSubmit = (data: z.infer<typeof formSchema>) => {
-    router.push(`/barbershops?search=${data.search}`);
+    router.push(`/barbershops?title=${data.title}`);
   };
 
   return (
@@ -50,7 +50,7 @@ const Search = ({ defaultValues }: SearchProps) => {
         >
           <FormField
             control={form.control}
-            name="search"
+            name="title"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
