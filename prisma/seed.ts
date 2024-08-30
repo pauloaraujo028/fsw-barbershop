@@ -143,7 +143,7 @@ async function seedDatabase() {
 
     const categories = [
       {
-        name: "Corte",
+        name: "Corte de Cabelo",
         imageUrl:
           "https://utfs.io/f/16818170-8369-4159-8d67-13d2116cb016-mmip3w.png",
       },
