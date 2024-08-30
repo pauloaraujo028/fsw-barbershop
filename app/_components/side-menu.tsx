@@ -9,8 +9,8 @@ import {
   LogOutIcon,
 } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 import Link from "next/link";
-import { ModeToggle } from "./mode-toggle";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -24,7 +24,7 @@ import {
 } from "./ui/alert-dialog";
 import { Avatar, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
-import { SheetHeader, SheetTitle } from "./ui/sheet";
+import { SheetClose, SheetHeader, SheetTitle } from "./ui/sheet";
 
 const SideMenu = () => {
   const { data } = useSession();
@@ -51,7 +51,6 @@ const SideMenu = () => {
               <p className="text-xs">{data.user.email}</p>
             </div>
           </div>
-          <ModeToggle />
         </div>
       ) : (
         <div className="flex flex-col px-5 py-6 gap-4">
@@ -75,7 +74,17 @@ const SideMenu = () => {
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <Button variant="outline" onClick={handleLoginClick}>
+                <Button
+                  className="gap-1"
+                  variant="outline"
+                  onClick={handleLoginClick}
+                >
+                  <Image
+                    src="google.svg"
+                    width={18}
+                    height={18}
+                    alt="Icone do Google"
+                  />
                   Google
                 </Button>
               </AlertDialogFooter>
@@ -86,29 +95,33 @@ const SideMenu = () => {
 
       <div className="flex flex-col">
         <div className="flex flex-col gap-3 px-5 py-6 border-b border-solid border-secondary">
-          <Button variant="outline" className="justify-start gap-2" asChild>
-            <Link href="/">
-              <HomeIcon size={18} />
-              Início
-            </Link>
-          </Button>
-
-          {data?.user && (
+          <SheetClose asChild>
             <Button variant="outline" className="justify-start gap-2" asChild>
-              <Link href="/bookings">
-                <CalendarDays size={18} />
-                Agendamentos
+              <Link href="/">
+                <HomeIcon size={18} />
+                Início
               </Link>
             </Button>
+          </SheetClose>
+          {data?.user && (
+            <SheetClose asChild>
+              <Button variant="outline" className="justify-start gap-2" asChild>
+                <Link href="/bookings">
+                  <CalendarDays size={18} />
+                  Agendamentos
+                </Link>
+              </Button>
+            </SheetClose>
           )}
-
           {data?.user && (
-            <Button variant="outline" className="justify-start gap-2" asChild>
-              <Link href="/dashboard">
-                <LayoutDashboardIcon size={18} />
-                Dashboard
-              </Link>
-            </Button>
+            <SheetClose asChild>
+              <Button variant="outline" className="justify-start gap-2" asChild>
+                <Link href="/dashboard">
+                  <LayoutDashboardIcon size={18} />
+                  Dashboard
+                </Link>
+              </Button>
+            </SheetClose>
           )}
         </div>
         <div className="flex px-5 py-6">

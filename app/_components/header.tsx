@@ -3,6 +3,7 @@
 import { MenuIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { ModeToggle } from "./mode-toggle";
 import SideMenu from "./side-menu";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
@@ -22,17 +23,21 @@ const Header = () => {
           />
         </Link>
 
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button variant="outline" size="icon">
-              <MenuIcon size={16} />
-            </Button>
-          </SheetTrigger>
+        <div className="space-x-2">
+          <ModeToggle />
 
-          <SheetContent className="p-0">
-            <SideMenu />
-          </SheetContent>
-        </Sheet>
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon">
+                <MenuIcon size={16} />
+              </Button>
+            </SheetTrigger>
+
+            <SheetContent className="p-0">
+              <SideMenu />
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );
