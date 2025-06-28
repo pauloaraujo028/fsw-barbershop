@@ -1,10 +1,8 @@
 "use client";
 
-import SideMenu from "@/app/_components/side-menu";
 import { Button } from "@/app/_components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/app/_components/ui/sheet";
 import { Barbershop } from "@prisma/client";
-import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react";
+import { ChevronLeftIcon, MapPinIcon, StarIcon } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -31,22 +29,6 @@ const BarbershopInfo = ({ barbershop }: BarbershopInfoProps) => {
           <ChevronLeftIcon />
         </Button>
 
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button
-              variant="outline"
-              size="icon"
-              className="z-50 top-4 right-4 absolute"
-            >
-              <MenuIcon />
-            </Button>
-          </SheetTrigger>
-
-          <SheetContent className="p-0">
-            <SideMenu />
-          </SheetContent>
-        </Sheet>
-
         <Image
           src={barbershop.imageUrl}
           fill
@@ -58,7 +40,7 @@ const BarbershopInfo = ({ barbershop }: BarbershopInfoProps) => {
         />
       </section>
 
-      <div className="px-5 pt-3 pb-6 border-b border-solid border-secondary flex flex-col gap-2">
+      <div className="max-w-7xl 2xl:max-w-full mx-auto px-5 pt-3 pb-6 border-b border-solid border-secondary flex flex-col gap-2">
         <h1 className="text-xl font-bold">{barbershop.name}</h1>
         <div className="flex items-center gap-1">
           <MapPinIcon className="text-primary" size={18} />
@@ -66,7 +48,7 @@ const BarbershopInfo = ({ barbershop }: BarbershopInfoProps) => {
         </div>
         <div className="flex items-center gap-1">
           <StarIcon className="text-primary fill-primary" size={18} />
-          <p className="text-sm">5,0 (899 avaliações) </p>
+          <p className="text-sm">5.0 (899 avaliações) </p>
         </div>
       </div>
     </main>

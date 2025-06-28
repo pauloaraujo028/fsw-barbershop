@@ -45,7 +45,7 @@ const BarbershopDetailsPage = async ({
     <main>
       <BarbershopInfo barbershop={barbershop} />
 
-      <div className="pt-6">
+      <div className="pt-6 max-w-7xl 2xl:max-w-full mx-auto">
         <Tabs defaultValue="servicos">
           <TabsList className="flex gap-3">
             <TabsTrigger
@@ -62,7 +62,7 @@ const BarbershopDetailsPage = async ({
             </TabsTrigger>
           </TabsList>
           <TabsContent value="servicos" className="p-0">
-            <div className="flex flex-col px-5 py-6 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 px-5 py-6 gap-4">
               {barbershop.services.map((service) => (
                 <ServiceItem
                   key={service.id}
